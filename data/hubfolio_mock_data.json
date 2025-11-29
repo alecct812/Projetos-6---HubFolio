@@ -1,0 +1,2402 @@
+[
+    {
+        "user_id": 41,
+        "nome": "Gustavo Lewandowski",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 6,
+            "habilidades_min": 15,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 3,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 41
+    },
+    {
+        "user_id": 4,
+        "nome": "Augusto Silva",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 20,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 56,
+        "nome": "Renata Phillips",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 79
+    },
+    {
+        "user_id": 146,
+        "nome": "Letícia Rangel",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 4,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 84
+    },
+    {
+        "user_id": 74,
+        "nome": "Zion Melo",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 7,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 3,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 40
+    },
+    {
+        "user_id": 15,
+        "nome": "Vitória Rivera",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 15,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 5,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 92
+    },
+    {
+        "user_id": 114,
+        "nome": "Eduardo Stewart",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 4,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 7,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 84
+    },
+    {
+        "user_id": 72,
+        "nome": "Rafael Vieira",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 71
+    },
+    {
+        "user_id": 28,
+        "nome": "Caio Turner",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 18,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 1,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 92
+    },
+    {
+        "user_id": 132,
+        "nome": "Milan Carvalho",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 3,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 54
+    },
+    {
+        "user_id": 138,
+        "nome": "Max Szymanski",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 86
+    },
+    {
+        "user_id": 38,
+        "nome": "Natália Lima",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 15,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 82
+    },
+    {
+        "user_id": 57,
+        "nome": "Daniell Campbell",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 5,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 4,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 92
+    },
+    {
+        "user_id": 37,
+        "nome": "João Torres",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 5,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 4,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 66
+    },
+    {
+        "user_id": 117,
+        "nome": "Devon Dias",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 10,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 0,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 92
+    },
+    {
+        "user_id": 32,
+        "nome": "Eliot Young",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 22,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 5,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 54
+    },
+    {
+        "user_id": 19,
+        "nome": "Sam Pereira",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 6,
+            "habilidades_min": 18,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 4,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 94
+    },
+    {
+        "user_id": 6,
+        "nome": "Alice Segura",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 15,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 5,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 95
+    },
+    {
+        "user_id": 14,
+        "nome": "Jules Thompson",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 55
+    },
+    {
+        "user_id": 143,
+        "nome": "Júlia Castillo",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 10,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 74
+    },
+    {
+        "user_id": 61,
+        "nome": "Rodrigo Souza",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 62
+    },
+    {
+        "user_id": 69,
+        "nome": "Enzo Smith",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 50
+    },
+    {
+        "user_id": 48,
+        "nome": "Clara Ramos",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 20,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 93
+    },
+    {
+        "user_id": 62,
+        "nome": "Lavínia Nunes",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 13,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 0,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 79
+    },
+    {
+        "user_id": 59,
+        "nome": "Rowan Teixeira",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 9,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 40
+    },
+    {
+        "user_id": 131,
+        "nome": "Olívia Cavalcanti",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 48
+    },
+    {
+        "user_id": 81,
+        "nome": "Jamie Wasilewski",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 12,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 2,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 40
+    },
+    {
+        "user_id": 16,
+        "nome": "Lorenzo Andrade",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 3,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 42
+    },
+    {
+        "user_id": 118,
+        "nome": "Cristian Fonseca",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 91
+    },
+    {
+        "user_id": 75,
+        "nome": "Isadora Ibarra",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 57
+    },
+    {
+        "user_id": 9,
+        "nome": "Kendall King",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 3,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 70
+    },
+    {
+        "user_id": 111,
+        "nome": "Daniel Cardoso",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 3,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 67
+    },
+    {
+        "user_id": 93,
+        "nome": "Quinn Leon",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 52
+    },
+    {
+        "user_id": 149,
+        "nome": "Luna Ortiz",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 4,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 58
+    },
+    {
+        "user_id": 40,
+        "nome": "Lívia Morales",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 4,
+            "habilidades_min": 14,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 47
+    },
+    {
+        "user_id": 86,
+        "nome": "Miguel Carter",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 2,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 3,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 44
+    },
+    {
+        "user_id": 82,
+        "nome": "Kai Evans",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 84
+    },
+    {
+        "user_id": 130,
+        "nome": "Giovana Walker",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 13,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 59
+    },
+    {
+        "user_id": 136,
+        "nome": "Logan Herrera",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 2,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 78
+    },
+    {
+        "user_id": 10,
+        "nome": "Lane Klein",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 12,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 85
+    },
+    {
+        "user_id": 139,
+        "nome": "Matheus Morris",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 41
+    },
+    {
+        "user_id": 121,
+        "nome": "Sarah Müller",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 57
+    },
+    {
+        "user_id": 33,
+        "nome": "Sérgio Anderson",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 3,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 42
+    },
+    {
+        "user_id": 115,
+        "nome": "Ellis Hall",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 13,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 91
+    },
+    {
+        "user_id": 53,
+        "nome": "Justice Reyes",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 11,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 0,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 92
+    },
+    {
+        "user_id": 129,
+        "nome": "Helena Cordero",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 4,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 42
+    },
+    {
+        "user_id": 113,
+        "nome": "Peyton Monteiro",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 89
+    },
+    {
+        "user_id": 145,
+        "nome": "Luca Adams",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 46
+    },
+    {
+        "user_id": 100,
+        "nome": "Remy Paredes",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 63
+    },
+    {
+        "user_id": 89,
+        "nome": "Lorena Mitchell",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 4,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 79
+    },
+    {
+        "user_id": 20,
+        "nome": "Alícia Almeida",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 1,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 51,
+        "nome": "Riley Cruz",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 7,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 0,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 88
+    },
+    {
+        "user_id": 105,
+        "nome": "Vitor Oliveira",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 12,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 5,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 34,
+        "nome": "Tainá Scott",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 7,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 5,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 67
+    },
+    {
+        "user_id": 84,
+        "nome": "Gabriel Jackson",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 4,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 0,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 84
+    },
+    {
+        "user_id": 39,
+        "nome": "Emanuel Trejo",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 1,
+            "habilidades_min": 22,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 3,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 59
+    },
+    {
+        "user_id": 99,
+        "nome": "Samuel Edwards",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 7,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 92
+    },
+    {
+        "user_id": 150,
+        "nome": "Hunter Martins",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 5,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 3,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 87,
+        "nome": "Rebeca Tavares",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 7,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 67
+    },
+    {
+        "user_id": 18,
+        "nome": "Ana Siqueira",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 67
+    },
+    {
+        "user_id": 135,
+        "nome": "Álvaro Ferreira",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 4,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 93
+    },
+    {
+        "user_id": 22,
+        "nome": "Pedro Schmitt",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 7,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 55
+    },
+    {
+        "user_id": 60,
+        "nome": "Yasmin Costa",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 11,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 59
+    },
+    {
+        "user_id": 44,
+        "nome": "Cameron Batista",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 4,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 1,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 127,
+        "nome": "Manuela Mendoza",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 69
+    },
+    {
+        "user_id": 90,
+        "nome": "Elliot Freitas",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 5,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 0,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 76
+    },
+    {
+        "user_id": 119,
+        "nome": "Cecília Alvarez",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 7,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 75
+    },
+    {
+        "user_id": 126,
+        "nome": "Renato Baker",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 12,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 56
+    },
+    {
+        "user_id": 103,
+        "nome": "Felipe Harris",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 78
+    },
+    {
+        "user_id": 97,
+        "nome": "Catarina Ribeiro",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 12,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 3,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 91
+    },
+    {
+        "user_id": 141,
+        "nome": "Chris Romero",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 11,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 55
+    },
+    {
+        "user_id": 26,
+        "nome": "Raul Suarez",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 21,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 43,
+        "nome": "Taylor Pinto",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 12,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 5,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 54
+    },
+    {
+        "user_id": 67,
+        "nome": "Henry Castro",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 10,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 0,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 55
+    },
+    {
+        "user_id": 137,
+        "nome": "Otávio Nascimento",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 59
+    },
+    {
+        "user_id": 109,
+        "nome": "Robin Santos",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 50
+    },
+    {
+        "user_id": 17,
+        "nome": "Gabriela Rojas",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 11,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 2,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 83
+    },
+    {
+        "user_id": 3,
+        "nome": "Beatriz Aguilar",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 2,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 0,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 40
+    },
+    {
+        "user_id": 123,
+        "nome": "Vinícius Novak",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 0,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 85
+    },
+    {
+        "user_id": 144,
+        "nome": "Carolina Peña",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 1,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 77
+    },
+    {
+        "user_id": 5,
+        "nome": "Nicole Farias",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 3,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 80
+    },
+    {
+        "user_id": 122,
+        "nome": "Ariel Taylor",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 4,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 85,
+        "nome": "Igor Carrillo",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 0,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 83
+    },
+    {
+        "user_id": 142,
+        "nome": "Alan Green",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 4,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 67
+    },
+    {
+        "user_id": 101,
+        "nome": "Ícaro Schröder",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 1,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 53
+    },
+    {
+        "user_id": 71,
+        "nome": "Bruno Campos",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 80
+    },
+    {
+        "user_id": 42,
+        "nome": "Thiago Flores",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 7,
+            "habilidades_min": 11,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 1,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 134,
+        "nome": "Skyler Lopez",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 15,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 45
+    },
+    {
+        "user_id": 50,
+        "nome": "Marley Acosta",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 2,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 94
+    },
+    {
+        "user_id": 80,
+        "nome": "Diego Vasquez",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 6,
+            "habilidades_min": 13,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 70
+    },
+    {
+        "user_id": 79,
+        "nome": "Marina Correia",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 3,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 3,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 42
+    },
+    {
+        "user_id": 102,
+        "nome": "Melissa Queiroz",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 3,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 51
+    },
+    {
+        "user_id": 55,
+        "nome": "Adrian Kowalski",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 14,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 3,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 57
+    },
+    {
+        "user_id": 106,
+        "nome": "Ryan Moura",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 5,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 94
+    },
+    {
+        "user_id": 148,
+        "nome": "Blake Lewis",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 11,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 3,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 62
+    },
+    {
+        "user_id": 65,
+        "nome": "Ian Cook",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 1,
+            "habilidades_min": 7,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 0,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 66
+    },
+    {
+        "user_id": 110,
+        "nome": "River Montoya",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 9,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 74
+    },
+    {
+        "user_id": 73,
+        "nome": "Nathan Schneider",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 6,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 4,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 61
+    },
+    {
+        "user_id": 30,
+        "nome": "Tobias Allen",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 6,
+            "habilidades_min": 20,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 1,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 45
+    },
+    {
+        "user_id": 88,
+        "nome": "Morgan Martin",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 43
+    },
+    {
+        "user_id": 35,
+        "nome": "Rafaela Gonzalez",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 2,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 45
+    },
+    {
+        "user_id": 46,
+        "nome": "Paulo Parker",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 0,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 47,
+        "nome": "Aurora Rezende",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 19,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 3,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 24,
+        "nome": "Lucas Hernandez",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 3,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 58
+    },
+    {
+        "user_id": 29,
+        "nome": "Valentina Wagner",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 7,
+            "habilidades_min": 10,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 4,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 44
+    },
+    {
+        "user_id": 2,
+        "nome": "Bianca Valentim",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 4,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 90
+    },
+    {
+        "user_id": 116,
+        "nome": "Noa Moore",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 61
+    },
+    {
+        "user_id": 13,
+        "nome": "Arthur Moreira",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 3,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 4,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 72
+    },
+    {
+        "user_id": 66,
+        "nome": "Alex Barros",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 66
+    },
+    {
+        "user_id": 140,
+        "nome": "Thaís Rogers",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 7,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 88
+    },
+    {
+        "user_id": 25,
+        "nome": "Davi Rocha",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 7,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 73
+    },
+    {
+        "user_id": 27,
+        "nome": "Pietra Nowak",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 6,
+            "habilidades_min": 19,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 4,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 73
+    },
+    {
+        "user_id": 63,
+        "nome": "Bryan Kaczmarek",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 5,
+            "habilidades_min": 1,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 86
+    },
+    {
+        "user_id": 92,
+        "nome": "Sasha Zielinski",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 42
+    },
+    {
+        "user_id": 147,
+        "nome": "Leonardo Brown",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 3,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 84
+    },
+    {
+        "user_id": 95,
+        "nome": "Guilherme Delgado",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 4,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 80
+    },
+    {
+        "user_id": 124,
+        "nome": "Henrique Bezerra",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 8,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 53
+    },
+    {
+        "user_id": 108,
+        "nome": "Aline Benitez",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 1,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 0,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 40
+    },
+    {
+        "user_id": 11,
+        "nome": "Fabrício Vargas",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 7,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 5,
+            "processo": 3,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 78
+    },
+    {
+        "user_id": 76,
+        "nome": "Emerson White",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 7,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 3,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 23,
+        "nome": "Dominique Wright",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 6,
+            "habilidades_min": 4,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 0,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 49,
+        "nome": "Brenda Wojcik",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 21,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 4,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 61
+    },
+    {
+        "user_id": 31,
+        "nome": "Gael Fischer",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 2,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 3,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 72
+    },
+    {
+        "user_id": 128,
+        "nome": "Sage Dantas",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 14,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 3,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 82
+    },
+    {
+        "user_id": 70,
+        "nome": "Elisa Murphy",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 1,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 0,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 82
+    },
+    {
+        "user_id": 1,
+        "nome": "André Weber",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 75
+    },
+    {
+        "user_id": 125,
+        "nome": "Casey Martinez",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 4,
+            "habilidades_min": 14,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 60
+    },
+    {
+        "user_id": 54,
+        "nome": "Quincy Becker",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 12,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 4,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 75
+    },
+    {
+        "user_id": 120,
+        "nome": "Sky Gomes",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 1,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 71
+    },
+    {
+        "user_id": 77,
+        "nome": "Mirella Collins",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 40
+    },
+    {
+        "user_id": 94,
+        "nome": "Laura Barbosa",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 2,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 1,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 80
+    },
+    {
+        "user_id": 52,
+        "nome": "Sofia Garcia",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 46
+    },
+    {
+        "user_id": 58,
+        "nome": "Serena Clark",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 2,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 57
+    },
+    {
+        "user_id": 112,
+        "nome": "Bernardo Kaminski",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 7,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 0,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 133,
+        "nome": "Marcelo Cortes",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 13,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 81
+    },
+    {
+        "user_id": 45,
+        "nome": "Heitor Hoffmann",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 18,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 4,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 88
+    },
+    {
+        "user_id": 7,
+        "nome": "Jordan Rodrigues",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 1,
+            "habilidades_min": 3,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 0,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 50
+    },
+    {
+        "user_id": 98,
+        "nome": "Dani Medina",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 5,
+            "habilidades_min": 9,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 69
+    },
+    {
+        "user_id": 21,
+        "nome": "Corey Ramirez",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 1,
+            "habilidades_min": 15,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 3,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 75
+    },
+    {
+        "user_id": 68,
+        "nome": "Avery Roberts",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 7,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 6,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 48
+    },
+    {
+        "user_id": 64,
+        "nome": "Phoenix Navarro",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 1,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 1,
+            "processo": 2,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 66
+    },
+    {
+        "user_id": 8,
+        "nome": "Camila Johnson",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 0,
+            "habilidades_min": 10,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 107,
+        "nome": "Heloísa Santiago",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 8,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 4,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 104,
+        "nome": "Amanda Machado",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 2,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 0,
+            "processo": 2,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 89
+    },
+    {
+        "user_id": 36,
+        "nome": "Marcela Fernandes",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 0,
+            "habilidades_min": 19,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 4,
+            "processo": 5,
+            "resultado": 5
+        },
+        "consistencia_visual_score": 65
+    },
+    {
+        "user_id": 83,
+        "nome": "Micaela Hill",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 2,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 2,
+            "resultado": 2
+        },
+        "consistencia_visual_score": 59
+    },
+    {
+        "user_id": 78,
+        "nome": "Tales Nelson",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 1,
+            "habilidades_min": 5,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 3,
+            "processo": 1,
+            "resultado": 0
+        },
+        "consistencia_visual_score": 84
+    },
+    {
+        "user_id": 96,
+        "nome": "Charlie Macedo",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 4,
+            "habilidades_min": 13,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 4,
+            "resultado": 3
+        },
+        "consistencia_visual_score": 86
+    },
+    {
+        "user_id": 12,
+        "nome": "Priscila Araújo",
+        "secoes_preenchidas": {
+            "bio": true,
+            "projetos_min": 2,
+            "habilidades_min": 4,
+            "contatos": false
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 1,
+            "resultado": 1
+        },
+        "consistencia_visual_score": 58
+    },
+    {
+        "user_id": 91,
+        "nome": "Daniela Salazar",
+        "secoes_preenchidas": {
+            "bio": false,
+            "projetos_min": 3,
+            "habilidades_min": 18,
+            "contatos": true
+        },
+        "palavras_chave_clareza": {
+            "contexto": 2,
+            "processo": 3,
+            "resultado": 4
+        },
+        "consistencia_visual_score": 86
+    }
+]

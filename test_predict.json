@@ -1,0 +1,11 @@
+﻿{
+  "user_id": 1,
+  "projetos_min": 5,
+  "habilidades_min": 15,
+  "kw_contexto": 5,
+  "kw_processo": 4,
+  "kw_resultado": 5,
+  "consistencia_visual_score": 90,
+  "bio": true,
+  "contatos": true
+}
