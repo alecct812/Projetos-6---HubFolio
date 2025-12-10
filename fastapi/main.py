@@ -5,10 +5,14 @@ API para gerenciamento de dados e inferência do modelo de ML
 import os
 import json
 import pickle
+import logging
 from typing import List, Optional
 from datetime import datetime
 
-from fastapi import FastAPI, File, UploadFile, HTTPException, status
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+from fastapi import FastAPI, File, UploadFile, HTTPException, status, Form
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import pandas as pd
@@ -17,6 +21,8 @@ import numpy as np
 from minio_client import MinIOClient
 from postgres_client import PostgreSQLClient
 from etl_minio_postgres import HubFolioETL
+from mlflow_client import MLflowClient
+from thingsboard_client import ThingsBoardClient
 
 # Inicializar FastAPI
 app = FastAPI(
@@ -28,6 +34,8 @@ app = FastAPI(
 # Inicializar clientes
 minio_client = MinIOClient()
 pg_client = None  # Será inicializado no startup
+mlflow_client = None  # Será inicializado no startup
+tb_client = None  # Será inicializado no startup
 
 
 # ====================================================================
@@ -39,6 +47,8 @@ class HealthResponse(BaseModel):
     minio_connected: bool
     bucket_exists: bool
     postgres_connected: bool
+    mlflow_connected: Optional[bool] = None
+    thingsboard_connected: Optional[bool] = None
     timestamp: str
 
 
@@ -195,11 +205,32 @@ predictor = HubFolioPredictor()
 @app.on_event("startup")
 async def startup_event():
     """Inicializa recursos na inicialização da aplicação"""
-    global pg_client, predictor
+    global pg_client, predictor, mlflow_client, tb_client
     
     # MinIO
     minio_client.create_bucket_if_not_exists()
     print(f"✅ Bucket '{minio_client.bucket_name}' verificado/criado com sucesso!")
+    
+    # Criar bucket mlflow-artifacts se não existir
+    try:
+        import boto3
+        from botocore.config import Config
+        s3_client = boto3.client(
+            's3',
+            endpoint_url=f'http://{os.getenv("MINIO_ENDPOINT", "minio:9000")}',
+            aws_access_key_id=os.getenv('MINIO_ACCESS_KEY', 'grupo_hubfolio'),
+            aws_secret_access_key=os.getenv('MINIO_SECRET_KEY', 'horse-lock-electric'),
+            config=Config(signature_version='s3v4'),
+            region_name='us-east-1'
+        )
+        try:
+            s3_client.head_bucket(Bucket='mlflow-artifacts')
+            print(f"✅ Bucket 'mlflow-artifacts' já existe")
+        except:
+            s3_client.create_bucket(Bucket='mlflow-artifacts')
+            print(f"✅ Bucket 'mlflow-artifacts' criado com sucesso!")
+    except Exception as e:
+        print(f"⚠️ Erro ao criar bucket mlflow-artifacts: {e}")
     
     # PostgreSQL
     try:
@@ -211,6 +242,28 @@ async def startup_event():
     except Exception as e:
         print(f"⚠️ Erro ao conectar PostgreSQL: {e}")
         pg_client = None
+    
+    # MLflow
+    try:
+        mlflow_client = MLflowClient()
+        if mlflow_client.check_connection():
+            print(f"✅ MLflow conectado com sucesso!")
+        else:
+            print(f"⚠️ MLflow não está acessível")
+    except Exception as e:
+        print(f"⚠️ Erro ao conectar MLflow: {e}")
+        mlflow_client = None
+    
+    # ThingsBoard
+    try:
+        tb_client = ThingsBoardClient()
+        if tb_client.check_connection():
+            print(f"✅ ThingsBoard conectado com sucesso!")
+        else:
+            print(f"⚠️ ThingsBoard não está acessível (pode ser normal se não configurado)")
+    except Exception as e:
+        print(f"⚠️ Erro ao conectar ThingsBoard: {e}")
+        tb_client = None
     
     # Tentar carregar modelo
     model_path = "/app/models/hubfolio_model.pkl"
@@ -248,7 +301,9 @@ async def root():
             },
             "ml": {
                 "predict": "/predict",
-                "model_info": "/model/info"
+                "model_info": "/model/info",
+                "model_upload": "/model/upload",
+                "export_to_s3": "/model/export-to-s3"
             }
         }
     }
@@ -260,14 +315,20 @@ async def health_check():
     minio_connected = minio_client.check_connection()
     bucket_exists = minio_client.bucket_exists()
     postgres_connected = pg_client.check_connection() if pg_client else False
+    mlflow_connected = mlflow_client.check_connection() if mlflow_client else False
+    tb_connected = tb_client.check_connection() if tb_client else False
     
-    return HealthResponse(
-        status="healthy" if (minio_connected and bucket_exists and postgres_connected) else "partial",
-        minio_connected=minio_connected,
-        bucket_exists=bucket_exists,
-        postgres_connected=postgres_connected,
-        timestamp=datetime.utcnow().isoformat()
-    )
+    all_connected = (minio_connected and bucket_exists and postgres_connected)
+    
+    return {
+        "status": "healthy" if all_connected else "partial",
+        "minio_connected": minio_connected,
+        "bucket_exists": bucket_exists,
+        "postgres_connected": postgres_connected,
+        "mlflow_connected": mlflow_connected,
+        "thingsboard_connected": tb_connected,
+        "timestamp": datetime.utcnow().isoformat()
+    }
 
 
 # ====================================================================
@@ -573,6 +634,24 @@ async def predict_portfolio_quality(portfolio: PortfolioInput):
         resultado['portfolio_id'] = portfolio_id
         resultado['prediction_id'] = prediction_id
         
+        # Enviar dados para ThingsBoard se disponível
+        if tb_client:
+            try:
+                device_token = os.getenv('THINGSBOARD_DEVICE_TOKEN', 'hubfolio-device-token')
+                tb_client.send_prediction_data(
+                    device_token=device_token,
+                    prediction_data={
+                        'portfolio_id': portfolio_id,
+                        'predicted_iq': resultado['indice_qualidade'],
+                        'classification': resultado['classificacao'],
+                        'model_name': resultado['model_name'],
+                        'user_id': user_id,
+                        'prediction_id': prediction_id
+                    }
+                )
+            except Exception as e:
+                logger.warning(f"Erro ao enviar dados para ThingsBoard: {e}")
+        
         return PredictionResponse(**resultado)
         
     except HTTPException:
@@ -586,18 +665,47 @@ async def predict_portfolio_quality(portfolio: PortfolioInput):
 
 @app.get("/model/info", tags=["Machine Learning"])
 async def get_model_info():
-    """Retorna informações sobre o modelo carregado"""
-    return {
+    """Retorna informações sobre o modelo carregado e no MLflow"""
+    info = {
         "model_loaded": predictor.modelo is not None,
         "model_name": predictor.model_name,
         "features": predictor.features,
         "num_features": len(predictor.features)
     }
+    
+    # Adicionar informações do MLflow se disponível
+    if mlflow_client:
+        try:
+            model_info = mlflow_client.get_model_info("hubfolio-model")
+            if model_info:
+                info["mlflow"] = model_info
+        except Exception as e:
+            logger.warning(f"Erro ao obter informações do MLflow: {e}")
+    
+    return info
 
 
 @app.post("/model/upload", tags=["Machine Learning"])
-async def upload_model(file: UploadFile = File(...)):
-    """Upload do modelo treinado (.pkl)"""
+async def upload_model(
+    file: UploadFile = File(...),
+    model_name: Optional[str] = Form("hubfolio-model"),
+    r2_score: Optional[float] = Form(None),
+    rmse: Optional[float] = Form(None),
+    mae: Optional[float] = Form(None),
+    register_in_mlflow: bool = Form(True),
+    export_to_s3: bool = Form(True)
+):
+    """
+    Upload do modelo treinado (.pkl) com versionamento no MLflow e exportação para S3
+    
+    Parâmetros opcionais:
+    - model_name: Nome do modelo no MLflow (padrão: "hubfolio-model")
+    - r2_score: R² score do modelo (para registro no MLflow)
+    - rmse: RMSE do modelo (para registro no MLflow)
+    - mae: MAE do modelo (para registro no MLflow)
+    - register_in_mlflow: Se True, registra no MLflow (padrão: True)
+    - export_to_s3: Se True, exporta para S3 após registro (padrão: True)
+    """
     try:
         if not file.filename.endswith('.pkl'):
             raise HTTPException(
@@ -614,17 +722,136 @@ async def upload_model(file: UploadFile = File(...)):
             f.write(contents)
         
         # Carregar modelo
-        if predictor.load_model(model_path):
-            return {
-                "message": "Modelo carregado com sucesso!",
-                "model_path": model_path,
-                "file_size": len(contents)
-            }
-        else:
+        if not predictor.load_model(model_path):
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail="Erro ao carregar modelo"
             )
+        
+        response_data = {
+            "message": "Modelo carregado com sucesso!",
+            "model_path": model_path,
+            "file_size": len(contents),
+            "mlflow_registered": False,
+            "s3_exported": False
+        }
+        
+        # Registrar no MLflow se solicitado
+        if register_in_mlflow and mlflow_client:
+            try:
+                # Carregar modelo para registro
+                with open(model_path, 'rb') as f:
+                    model = pickle.load(f)
+                
+                # Preparar métricas
+                metrics = {}
+                logger.info(f"📊 DEBUG - Parâmetros recebidos: r2_score={r2_score} (type: {type(r2_score)}), rmse={rmse} (type: {type(rmse)}), mae={mae} (type: {type(mae)})")
+                
+                # Converter strings para float se necessário
+                if r2_score is not None and r2_score != "" and str(r2_score).lower() != "none":
+                    try:
+                        metrics['r2_score'] = float(r2_score)
+                        logger.info(f"✅ R² Score adicionado: {metrics['r2_score']}")
+                    except (ValueError, TypeError) as e:
+                        logger.warning(f"⚠️ Erro ao converter r2_score: {e}")
+                
+                if rmse is not None and rmse != "" and str(rmse).lower() != "none":
+                    try:
+                        metrics['rmse'] = float(rmse)
+                        logger.info(f"✅ RMSE adicionado: {metrics['rmse']}")
+                    except (ValueError, TypeError) as e:
+                        logger.warning(f"⚠️ Erro ao converter rmse: {e}")
+                
+                if mae is not None and mae != "" and str(mae).lower() != "none":
+                    try:
+                        metrics['mae'] = float(mae)
+                        logger.info(f"✅ MAE adicionado: {metrics['mae']}")
+                    except (ValueError, TypeError) as e:
+                        logger.warning(f"⚠️ Erro ao converter mae: {e}")
+                
+                # Se não houver métricas, avisar mas não usar valores zerados
+                if not metrics:
+                    logger.warning("⚠️ Nenhuma métrica fornecida. Use r2_score, rmse, mae como parâmetros.")
+                    metrics = {
+                        'r2_score': 0.0,
+                        'rmse': 0.0,
+                        'mae': 0.0
+                    }
+                    response_data["warning"] = "Métricas não fornecidas - valores zerados serão registrados. Faça upload novamente com métricas para corrigir."
+                
+                # Registrar modelo
+                run_id = mlflow_client.log_model(
+                    model=model,
+                    model_name=model_name,
+                    metrics=metrics,
+                    parameters={
+                        'model_type': type(model).__name__,
+                        'features_count': len(predictor.features)
+                    },
+                    tags={
+                        'uploaded_at': datetime.utcnow().isoformat(),
+                        'source': 'api_upload'
+                    }
+                )
+                
+                # Adicionar descrição ao modelo se houver métricas
+                if metrics and any(v > 0 for v in metrics.values()):
+                    description = f"Modelo {model_name} - "
+                    desc_parts = []
+                    if metrics.get('r2_score', 0) > 0:
+                        desc_parts.append(f"R²: {metrics['r2_score']:.3f}")
+                    if metrics.get('rmse', 0) > 0:
+                        desc_parts.append(f"RMSE: {metrics['rmse']:.2f}")
+                    if metrics.get('mae', 0) > 0:
+                        desc_parts.append(f"MAE: {metrics['mae']:.2f}")
+                    if desc_parts:
+                        description += " | ".join(desc_parts)
+                    else:
+                        description += "Upload via API"
+                else:
+                    description = f"Modelo {model_name} - Upload via API (métricas não fornecidas)"
+                
+                if run_id:
+                    # Preparar descrição
+                    description = None
+                    if metrics and any(v > 0 for v in metrics.values()):
+                        desc_parts = []
+                        if metrics.get('r2_score', 0) > 0:
+                            desc_parts.append(f"R²: {metrics['r2_score']:.3f}")
+                        if metrics.get('rmse', 0) > 0:
+                            desc_parts.append(f"RMSE: {metrics['rmse']:.2f}")
+                        if metrics.get('mae', 0) > 0:
+                            desc_parts.append(f"MAE: {metrics['mae']:.2f}")
+                        if desc_parts:
+                            description = " | ".join(desc_parts)
+                    
+                    # Registrar versão no Model Registry
+                    version = mlflow_client.register_model_version(
+                        model_name=model_name,
+                        run_id=run_id,
+                        stage="Production",
+                        description=description
+                    )
+                    
+                    response_data["mlflow_registered"] = True
+                    response_data["mlflow_run_id"] = run_id
+                    response_data["mlflow_model_version"] = version
+                    
+                    # Exportar para S3 se solicitado
+                    if export_to_s3:
+                        s3_key = mlflow_client.export_model_to_s3(
+                            model_name=model_name,
+                            stage="Production"
+                        )
+                        if s3_key:
+                            response_data["s3_exported"] = True
+                            response_data["s3_key"] = s3_key
+                
+            except Exception as e:
+                logger.error(f"Erro ao registrar modelo no MLflow: {e}")
+                response_data["mlflow_error"] = str(e)
+        
+        return response_data
         
     except HTTPException:
         raise
@@ -632,6 +859,50 @@ async def upload_model(file: UploadFile = File(...)):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Erro ao processar upload do modelo: {str(e)}"
+        )
+
+
+@app.post("/model/export-to-s3", tags=["Machine Learning"])
+async def export_model_to_s3(
+    model_name: str = "hubfolio-model",
+    stage: str = "Production"
+):
+    """
+    Exporta modelo do MLflow para S3 (MinIO)
+    
+    Args:
+        model_name: Nome do modelo no MLflow
+        stage: Stage do modelo (Production, Staging, Archived)
+    """
+    if not mlflow_client:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="MLflow não está disponível"
+        )
+    
+    try:
+        s3_key = mlflow_client.export_model_to_s3(
+            model_name=model_name,
+            stage=stage
+        )
+        
+        if s3_key:
+            return {
+                "message": "Modelo exportado para S3 com sucesso!",
+                "model_name": model_name,
+                "stage": stage,
+                "s3_key": s3_key
+            }
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Falha ao exportar modelo para S3"
+            )
+            
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Erro ao exportar modelo para S3: {str(e)}"
         )
 
 

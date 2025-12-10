@@ -262,6 +262,14 @@ ALTER TABLE portfolio_metrics ADD CONSTRAINT unique_portfolio_id UNIQUE (portfol
 COMMENT ON FUNCTION calculate_portfolio_metrics IS 'Calcula e atualiza métricas de um portfólio';
 
 -- ====================================================================
+-- BANCO DE DADOS PARA THINGSBOARD
+-- ====================================================================
+-- Criar banco de dados separado para ThingsBoard
+-- O ThingsBoard criará suas próprias tabelas automaticamente
+CREATE DATABASE thingsboard;
+COMMENT ON DATABASE thingsboard IS 'Banco de dados para ThingsBoard (dashboard de visualização)';
+
+-- ====================================================================
 -- DADOS DE EXEMPLO (opcional - será populado pelo ETL)
 -- ====================================================================
 

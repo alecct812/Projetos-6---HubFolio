@@ -1,13 +1,13 @@
-version: "3.8"
-
 services:
-  # MinIO - Armazenamento de objetos (compatível com S3)
+  # ----------------------------------------------------------------
+  # 1. ARMAZENAMENTO (MinIO - S3)
+  # ----------------------------------------------------------------
   minio:
     image: minio/minio:latest
     container_name: hubfolio_minio
     ports:
-      - "9100:9000" # API do MinIO
-      - "9101:9001" # Console Web do MinIO
+      - "9100:9000"
+      - "9101:9001"
     environment:
       MINIO_ROOT_USER: grupo_hubfolio
       MINIO_ROOT_PASSWORD: horse-lock-electric
@@ -22,7 +22,9 @@ services:
       timeout: 20s
       retries: 3
 
-  # PostgreSQL - Banco de Dados Relacional
+  # ----------------------------------------------------------------
+  # 2. BANCO DE DADOS (PostgreSQL)
+  # ----------------------------------------------------------------
   postgres:
     image: postgres:15-alpine
     container_name: hubfolio_postgres
@@ -44,7 +46,67 @@ services:
       timeout: 5s
       retries: 5
 
-  # FastAPI - API de Ingestão de Dados
+  # ----------------------------------------------------------------
+  # 3. RASTREAMENTO DE ML (MLflow) - IMAGEM CUSTOMIZADA 🔧
+  # ----------------------------------------------------------------
+  mlflow:
+    # Usando Dockerfile customizado para garantir compatibilidade
+    build: ./mlflow
+    container_name: hubfolio_mlflow
+    ports:
+      - "5001:5000"
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=postgresql://hubfolio_user:hubfolio_password_2025@postgres:5432/hubfolio
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+      - AWS_ACCESS_KEY_ID=grupo_hubfolio
+      - AWS_SECRET_ACCESS_KEY=horse-lock-electric
+      - AWS_DEFAULT_REGION=us-east-1
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    networks:
+      - hubfolio_network
+    command: >
+      mlflow server
+      --backend-store-uri postgresql://hubfolio_user:hubfolio_password_2025@postgres:5432/hubfolio
+      --default-artifact-root s3://mlflow-artifacts
+      --host 0.0.0.0
+      --port 5000
+
+  # ----------------------------------------------------------------
+  # 4. VISUALIZAÇÃO (ThingsBoard) - IMAGEM OFICIAL 🔧
+  # ----------------------------------------------------------------
+  # Nota: ThingsBoard requer seu próprio banco de dados
+  # Criamos um banco separado 'thingsboard' no PostgreSQL
+  thingsboard:
+    image: thingsboard/tb-postgres:latest
+    container_name: hubfolio_thingsboard
+    ports:
+      - "8080:9090"
+      - "1883:1883"
+    environment:
+      - TB_QUEUE_TYPE=in-memory
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/thingsboard
+      - SPRING_DATASOURCE_USERNAME=hubfolio_user
+      - SPRING_DATASOURCE_PASSWORD=hubfolio_password_2025
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - hubfolio_network
+    # ThingsBoard pode levar vários minutos para inicializar
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9090/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 180s
+
+  # ----------------------------------------------------------------
+  # 5. INGESTÃO E API (FastAPI)
+  # ----------------------------------------------------------------
   fastapi:
     build: ./fastapi
     container_name: hubfolio_fastapi
@@ -60,12 +122,19 @@ services:
       POSTGRES_DB: hubfolio
       POSTGRES_USER: hubfolio_user
       POSTGRES_PASSWORD: hubfolio_password_2025
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      MLFLOW_S3_ENDPOINT_URL: http://minio:9000
+      MLFLOW_EXPERIMENT_NAME: hubfolio-models
+      THINGSBOARD_URL: http://thingsboard:9090
+      THINGSBOARD_DEVICE_TOKEN: hubfolio-device-token
     volumes:
       - ./fastapi:/app
-      - ./data:/data/archive:ro # Dados do dataset em modo read-only
+      - ./data:/data/archive:ro
     depends_on:
       - minio
       - postgres
+      - mlflow
+      - thingsboard
     networks:
       - hubfolio_network
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
@@ -76,6 +145,9 @@ volumes:
     driver: local
   postgres_data:
     name: hubfolio_postgres_data
+    driver: local
+  tb_data:
+    name: hubfolio_tb_data
     driver: local
 
 networks:
