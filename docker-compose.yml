@@ -84,8 +84,8 @@ services:
     image: thingsboard/tb-postgres:latest
     container_name: hubfolio_thingsboard
     ports:
-      - "8080:9090"
-      - "1883:1883"
+      - "8081:9090"  
+      - "1884:1883"   
     environment:
       - TB_QUEUE_TYPE=in-memory
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/thingsboard
@@ -126,7 +126,7 @@ services:
       MLFLOW_S3_ENDPOINT_URL: http://minio:9000
       MLFLOW_EXPERIMENT_NAME: hubfolio-models
       THINGSBOARD_URL: http://thingsboard:9090
-      THINGSBOARD_DEVICE_TOKEN: hubfolio-device-token
+      THINGSBOARD_DEVICE_TOKEN: Wy5t8XKqyuSula3bfeCQ
     volumes:
       - ./fastapi:/app
       - ./data:/data/archive:ro
