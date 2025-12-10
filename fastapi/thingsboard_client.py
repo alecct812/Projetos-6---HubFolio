@@ -100,7 +100,7 @@ class ThingsBoardClient:
             )
             
             if response.status_code in [200, 201]:
-                logger.debug(f"✅ Telemetria enviada para ThingsBoard: {len(telemetry_data)} campos")
+                logger.info(f"✅ Telemetria enviada para ThingsBoard: {telemetry_data}")
                 return True
             else:
                 logger.warning(f"⚠️ Erro ao enviar telemetria: {response.status_code} - {response.text}")

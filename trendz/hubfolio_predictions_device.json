@@ -1,0 +1,35 @@
+﻿{
+    "id":  {
+               "entityType":  "DEVICE",
+               "id":  "5665c340-d5d7-11f0-bdb8-b1383ee14c6b"
+           },
+    "createdTime":  1765378129268,
+    "tenantId":  {
+                     "entityType":  "TENANT",
+                     "id":  "217b89a0-d5d5-11f0-aa6d-2b603bed263c"
+                 },
+    "customerId":  {
+                       "entityType":  "CUSTOMER",
+                       "id":  "13814000-1dd2-11b2-8080-808080808080"
+                   },
+    "name":  "HubFolio Predictions",
+    "type":  "default",
+    "label":  null,
+    "deviceProfileId":  {
+                            "entityType":  "DEVICE_PROFILE",
+                            "id":  "2188d010-d5d5-11f0-aa6d-2b603bed263c"
+                        },
+    "firmwareId":  null,
+    "softwareId":  null,
+    "externalId":  null,
+    "version":  1,
+    "additionalInfo":  null,
+    "deviceData":  {
+                       "configuration":  {
+                                             "type":  "DEFAULT"
+                                         },
+                       "transportConfiguration":  {
+                                                      "type":  "DEFAULT"
+                                                  }
+                   }
+}

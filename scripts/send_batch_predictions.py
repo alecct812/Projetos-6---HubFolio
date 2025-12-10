@@ -11,17 +11,20 @@ DATA_PATH = "data/hubfolio_mock_data.json"
 
 
 def normalize_item(item, idx):
-    # Adapte os campos conforme seu JSON; use defaults se não houver.
+    """Normaliza um item do JSON para o formato esperado pelo /predict."""
+    secoes = item.get("secoes_preenchidas", {})
+    palavras = item.get("palavras_chave_clareza", {})
+    
     return {
         "user_id": item.get("user_id", idx + 1),
-        "projetos_min": item.get("projetos_min", 3),
-        "habilidades_min": item.get("habilidades_min", 10),
-        "kw_contexto": item.get("kw_contexto", 4),
-        "kw_processo": item.get("kw_processo", 3),
-        "kw_resultado": item.get("kw_resultado", 4),
+        "projetos_min": secoes.get("projetos_min", item.get("projetos_min", 3)),
+        "habilidades_min": secoes.get("habilidades_min", item.get("habilidades_min", 10)),
+        "kw_contexto": palavras.get("contexto", item.get("kw_contexto", 4)),
+        "kw_processo": palavras.get("processo", item.get("kw_processo", 3)),
+        "kw_resultado": palavras.get("resultado", item.get("kw_resultado", 4)),
         "consistencia_visual_score": item.get("consistencia_visual_score", 80),
-        "bio": item.get("bio", True),
-        "contatos": item.get("contatos", True),
+        "bio": secoes.get("bio", item.get("bio", True)),
+        "contatos": secoes.get("contatos", item.get("contatos", True)),
     }
 
 

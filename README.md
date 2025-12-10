@@ -1,195 +1,117 @@
-# 🎓 HubFólio - Sistema de Avaliação de Qualidade de Portfólios
+# HubFólio - Pipeline de Machine Learning para Análise de Portfólios
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104-green.svg)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+Sistema completo de análise e predição de qualidade de portfólios para estudantes de Design e Ciência da Computação.
 
-## 📚 Informações Acadêmicas
-
-**Disciplina:** Aprendizado de Máquina - 2025.2  
-**Instituição:** CESAR School
-
-> **💡 IMPORTANTE:** Os dados **persistem** entre reinicializações graças aos volumes do Docker. Você só precisa carregar os dados (ingest + ETL) **uma única vez** na primeira execução. Nas próximas vezes, basta `docker-compose up -d` e os dados estarão lá!
-
----
-
-## 📋 Sobre o Projeto
-
-O **HubFólio** é uma plataforma que utiliza Machine Learning para avaliar a qualidade de portfólios de estudantes de Design e Ciência da Computação, fornecendo:
-
-- ✅ **Índice de Qualidade (IQ)** - Score de 0-100 baseado em múltiplos critérios
-- 📊 **Métricas Detalhadas** - Completude, Clareza e Consistência Visual
-- 💡 **Feedback Personalizado** - Sugestões específicas de melhoria
-- 🤖 **Predição em Tempo Real** - API REST para integração
-
-### Pipeline Completo
+## Arquitetura
 
 ```
-┌─────────────┐    ┌─────────┐    ┌──────────────┐    ┌─────────┐
-│   FastAPI   │───▶│  MinIO  │───▶│  PostgreSQL  │───▶│ Jupyter │
-│  (Ingestão) │    │  (S3)   │    │ (Estrutura)  │    │(Análise)│
-└─────────────┘    └─────────┘    └──────────────┘    └─────────┘
-                                                             │
-                                           ┌─────────────────┘
-                                           │ Modelo Treinado
-                                           ▼
-                                    ┌──────────────┐
-                                    │  FastAPI ML  │
-                                    │  (Inferência)│
-                                    └──────────────┘
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   FastAPI   │───►│    MinIO    │───►│  PostgreSQL │───►│  ThingsBoard│
+│  (Ingestão) │    │ (Storage S3)│    │   (Banco)   │    │ (Dashboard) │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+       │                                     │
+       │              ┌─────────────┐        │
+       └─────────────►│   MLflow    │◄───────┘
+                      │(Experimentos)│
+                      └─────────────┘
 ```
 
----
+## Pré-requisitos
 
-## 🚀 Quick Start
+- **Docker Desktop** (Windows/Mac) ou **Docker + Docker Compose** (Linux)
+- **Python 3.10+** (para rodar o notebook e scripts de teste)
+- **Git** (para clonar o repositório)
 
-### Pré-requisitos
+### Dependências do Notebook
 
-- **Docker Desktop** (versão 20.10+)
-- **Docker Compose** (versão 2.0+)
-- **Git**
-
-### 🆕 Primeira Vez (Setup Inicial)
-
-#### Passo 1: Clonar o Repositório
-
-```powershell
-git clone <seu-repositorio>
-cd hubfolio
+```bash
+pip install -r notebooks/requirements-notebook.txt
 ```
 
-#### Passo 2: Levantar a Infraestrutura
+## Instalação e Execução
 
-```powershell
+### Passo 1: Clonar o Repositório
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd Projetos-6---HubFolio
+```
+
+### Passo 2: Subir os Containers
+
+```bash
 docker-compose up -d
 ```
 
-**Saída esperada:**
+Este comando irá iniciar 5 serviços:
 
-```
-[+] Running 3/3
- ✔ Container hubfolio_minio      Started
- ✔ Container hubfolio_postgres   Started
- ✔ Container hubfolio_fastapi    Started
-```
+- **MinIO** (porta 9100/9101) - Armazenamento S3
+- **PostgreSQL** (porta 5433) - Banco de dados
+- **MLflow** (porta 5001) - Tracking de experimentos
+- **ThingsBoard** (porta 8081) - Dashboard de visualização
+- **FastAPI** (porta 8001) - API de ingestão e predição
 
-#### Passo 3: Carregar Dados no MinIO (APENAS NA PRIMEIRA VEZ)
+### Passo 3: Aguardar Inicialização
 
-```powershell
-Invoke-WebRequest -Uri http://localhost:8001/ingest/hubfolio -Method POST
-```
+O ThingsBoard demora alguns minutos para inicializar na primeira vez. Verifique o status:
 
-**Ou acesse:** http://localhost:8001/docs e teste o endpoint `POST /ingest/hubfolio`
-
-#### Passo 4: Executar ETL (MinIO → PostgreSQL) (APENAS NA PRIMEIRA VEZ)
-
-```powershell
-Invoke-WebRequest -Uri http://localhost:8001/etl/run -Method POST
+```bash
+docker-compose logs -f thingsboard
 ```
 
-#### Passo 5: Verificar Dados
+Aguarde até ver mensagens indicando que o serviço está pronto.
 
-```powershell
-Invoke-WebRequest -Uri http://localhost:8001/postgres/summary -Method GET
+### Passo 4: Verificar se Tudo Está Funcionando
+
+Acesse os serviços:
+
+| Serviço        | URL                        | Credenciais                          |
+| -------------- | -------------------------- | ------------------------------------ |
+| FastAPI (Docs) | http://localhost:8001/docs | -                                    |
+| MinIO Console  | http://localhost:9101      | grupo_hubfolio / horse-lock-electric |
+| MLflow         | http://localhost:5001      | -                                    |
+| ThingsBoard    | http://localhost:8081      | tenant@thingsboard.org / tenant      |
+
+Teste o health check da API:
+
+```bash
+curl http://localhost:8001/health
 ```
 
-**Resposta esperada:**
+## Fluxo do Projeto
 
-```json
-{
-  "tables": {
-    "users": 150,
-    "portfolios": 150,
-    "portfolio_metrics": 150,
-    "predictions": 0
-  }
-}
+### 1. Ingestão de Dados
+
+OBS.: Basta ingerir apenas uma vez, caso faça a ingestão novamente os dados vão ficar duplicados, por exemplo: deve ter originalmente 150 portfólios, ingerindo novamente -> fica em 300
+
+O FastAPI recebe dados de portfólios e armazena no MinIO:
+
+```bash
+curl -X POST "http://localhost:8001/ingest/hubfolio" \
+  -H "Content-Type: application/json"
 ```
 
-✅ **Pronto!** Os dados agora estão persistidos nos volumes do Docker.
+### 2. ETL (MinIO → PostgreSQL)
 
----
+Executa a transformação dos dados:
 
-### 🔄 Próximas Vezes (Reinicializações)
-
-Quando você parar e subir os containers novamente, os dados **permanecem** (não precisa recarregar):
-
-```powershell
-# Parar containers
-docker-compose down
-
-# Subir novamente (dados permanecem nos volumes)
-docker-compose up -d
-
-# ✅ Dados já estão lá! Não precisa fazer ingest/ETL novamente
+```bash
+curl -X POST "http://localhost:8001/etl/run"
 ```
 
-**Verificar que os dados continuam:**
+### 3. Treinamento do Modelo
 
-```powershell
-Invoke-WebRequest -Uri http://localhost:8001/postgres/summary -Method GET
-```
+Abra o notebook `notebooks/ML_HubFolio.ipynb` e execute todas as células.
 
----
+O modelo será salvo em `fastapi/models/hubfolio_model.pkl`.
 
-### 🗑️ Reset Completo (Começar do Zero)
+### 4. Fazer Predições
 
-Se quiser apagar TUDO e recomeçar:
+Envie dados de um portfólio para obter a predição:
 
-```powershell
-# Para e remove containers + volumes (apaga dados)
-docker-compose down -v
-
-# Subir do zero
-docker-compose up -d
-
-# Recarregar dados (primeira vez de novo)
-Invoke-WebRequest -Uri http://localhost:8001/ingest/hubfolio -Method POST
-Invoke-WebRequest -Uri http://localhost:8001/etl/run -Method POST
-```
-
----
-
-## 🔗 Acessos aos Serviços
-
-| Serviço               | URL                        | Credenciais                                                                   |
-| --------------------- | -------------------------- | ----------------------------------------------------------------------------- |
-| **FastAPI (Swagger)** | http://localhost:8000/docs | -                                                                             |
-| **MinIO Console**     | http://localhost:9001      | User: `hubfolio_admin`<br>Password: `hubfolio_secret_2025`                    |
-| **PostgreSQL**        | `localhost:5432`           | User: `hubfolio_user`<br>Password: `hubfolio_password_2025`<br>DB: `hubfolio` |
-
----
-
-## 📊 Dataset
-
-- **Fonte:** Dados mockados de 150 portfólios de estudantes
-- **Arquivo:** `data/hubfolio_mock_data.json`
-- **Registros:** 150 usuários
-- **Features:**
-  - Seções preenchidas (bio, projetos, habilidades, contatos)
-  - Palavras-chave de clareza (contexto, processo, resultado)
-  - Score de consistência visual (0-100)
-
----
-
-## 🧪 Testando a API
-
-### 1. Via Swagger UI (Recomendado)
-
-Acesse: http://localhost:8001/docs
-
-### 2. Via cURL - Health Check
-
-```powershell
-Invoke-WebRequest -Uri http://localhost:8001/health
-```
-
-### 3. Fazer uma Predição (após treinar o modelo)
-
-```powershell
-Invoke-WebRequest -Uri "http://localhost:8001/predict" -Method POST `
-  -H "Content-Type: application/json" `
+```bash
+curl -X POST "http://localhost:8001/predict" \
+  -H "Content-Type: application/json" \
   -d '{
     "projetos_min": 3,
     "habilidades_min": 10,
@@ -202,282 +124,124 @@ Invoke-WebRequest -Uri "http://localhost:8001/predict" -Method POST `
   }'
 ```
 
-**Resposta esperada:**
+### 5. Visualização no ThingsBoard
 
-```json
-{
-  "sucesso": true,
-  "indice_qualidade": 78.5,
-  "classificacao": "Bom",
-  "feedback": ["Seu portfólio está bem estruturado!"],
-  "model_name": "LinearRegression",
-  "predicted_at": "2025-11-25T10:30:00.000Z"
-}
+Você não precisa criar nada manualmente no ThingsBoard: basta importar o dashboard já pronto.
+
+1. Acesse http://localhost:8081
+2. ThingsBoard → Entidades → Dispositivos → `+` → **Adicionar novo dispositivo**.
+3. Nome: `HubFolio Predictions` (perfil: default). Criar.
+4. Abra o dispositivo criado → aba **Credenciais** → copie o **Access Token**.
+5. No `docker-compose.yml` (ou `.env`), defina `THINGSBOARD_DEVICE_TOKEN` com esse token e rode:
+   ```bash
+   docker-compose restart fastapi
+   ```
+6. Importe o dashboard (`trendz/hubfolio_analytics_dashboard.json`), abra em **Edit mode** → **Aliases** e selecione o dispositivo `HubFolio Predictions` criado. Salve.
+
+Pronto: os widgets já vêm configurados; basta ter o alias apontando para o dispositivo que recebe a telemetria.
+
+#### Testar com Dados de Streaming
+
+```bash
+python scripts/stream_simulator_local.py --limit 10 --delay 1
 ```
 
----
+## Scripts Disponíveis
 
-## 📁 Estrutura do Projeto
+| Script                              | Descrição                      |
+| ----------------------------------- | ------------------------------ |
+| `scripts/stream_simulator_local.py` | Simula envio de dados para API |
+| `scripts/send_batch_predictions.py` | Envia predições em lote        |
 
-```
-hubfolio/
-├── docker-compose.yml          # Orquestração dos contêineres
-├── README.md                   # Este arquivo
-│
-├── data/                       # Dataset
-│   └── hubfolio_mock_data.json # 150 portfólios mockados
-│
-├── fastapi/                    # Camada de ingestão e ML
-│   ├── Dockerfile
-│   ├── main.py                 # Aplicação FastAPI
-│   ├── minio_client.py         # Cliente MinIO/S3
-│   ├── postgres_client.py      # Cliente PostgreSQL
-│   ├── etl_minio_postgres.py   # ETL MinIO → PostgreSQL
-│   ├── load_data.py            # Script de carga inicial
-│   └── requirements.txt
-│
-├── postgres/                   # Configuração do banco
-│   └── init.sql                # Schema e estrutura de tabelas
-│
-├── notebooks/                  # Análise e modelagem
-│   └── (copie seu notebook aqui)
-│
-└── models/                     # Modelos treinados
-    └── hubfolio_model.pkl      # Modelo exportado do notebook
-```
-
-**Volumes Docker (persistência de dados):**
+## Estrutura do Projeto
 
 ```
-Volumes criados automaticamente:
-├── hubfolio_minio_data         # Arquivos do MinIO
-└── hubfolio_postgres_data      # Banco de dados PostgreSQL
+/
+├── docker-compose.yml    # Orquestração dos containers
+├── fastapi/              # API de ingestão e ML
+│   ├── main.py          # Endpoints FastAPI
+│   ├── models/          # Modelos treinados (.pkl)
+│   └── requirements.txt # Dependências da API
+├── mlflow/               # Configuração MLflow
+├── postgres/             # Schema do banco de dados
+├── notebooks/            # Notebooks de análise e treinamento
+│   ├── ML_HubFolio.ipynb
+│   └── requirements-notebook.txt
+├── trendz/               # Dashboards exportados (ThingsBoard)
+├── reports/              # Plots gerados pelo notebook
+├── data/                 # Dados de exemplo
+├── scripts/              # Scripts utilitários
+├── README.md
+└── LICENSE
 ```
 
----
+## API Endpoints
 
-## 📈 Fluxo de Dados Completo
+| Método | Endpoint           | Descrição                      |
+| ------ | ------------------ | ------------------------------ |
+| GET    | `/health`          | Verifica status dos serviços   |
+| POST   | `/ingest/hubfolio` | Ingere dados do HubFólio       |
+| POST   | `/etl/run`         | Executa ETL MinIO → PostgreSQL |
+| POST   | `/predict`         | Faz predição de qualidade      |
+| GET    | `/model/info`      | Info do modelo carregado       |
+| POST   | `/model/upload`    | Upload de novo modelo          |
 
-### 1️⃣ Ingestão (IMPLEMENTADO ✅)
+## Métricas do Modelo
 
-```
-Dataset Local → FastAPI → MinIO
-```
+O modelo prevê o **Índice de Qualidade (IQ)** do portfólio baseado em:
 
-- Lê `hubfolio_mock_data.json`
-- Valida JSON
-- Upload para MinIO (`hubfolio-data` bucket)
+- `projetos_min` - Quantidade de projetos
+- `habilidades_min` - Quantidade de habilidades listadas
+- `kw_contexto` - Palavras-chave de contexto
+- `kw_processo` - Palavras-chave de processo
+- `kw_resultado` - Palavras-chave de resultado
+- `consistencia_visual_score` - Score de consistência visual
+- `bio` - Se possui bio
+- `contatos` - Se possui contatos
 
-### 2️⃣ Estruturação (IMPLEMENTADO ✅)
+**Desempenho**: RMSE ~5.13 pontos de IQ (modelo Regressão Linear)
 
-```
-MinIO → ETL Script → PostgreSQL
-```
+## Comandos Úteis
 
-Tabelas criadas:
-
-- `users` - Informações dos usuários
-- `portfolios` - Dados brutos dos portfólios
-- `portfolio_metrics` - Métricas calculadas (Completude, Clareza, IQ)
-- `predictions` - Predições do modelo ML
-
-### 3️⃣ Modelagem (PRÓXIMO PASSO)
-
-```
-PostgreSQL → Jupyter Notebook → Modelo Treinado → PostgreSQL
-```
-
-1. Carregar dados do PostgreSQL
-2. Análise exploratória (EDA)
-3. Treinar modelos (Linear Regression, Decision Tree, KNN)
-4. Avaliar performance
-5. Exportar melhor modelo como `.pkl`
-6. Salvar predições no banco
-
-### 4️⃣ Inferência (IMPLEMENTADO ✅)
-
-```
-API Request → FastAPI → Modelo ML → Resposta JSON
-```
-
----
-
-## 🤖 Machine Learning
-
-### Modelos Implementados
-
-1. **Linear Regression** (Baseline)
-2. **Decision Tree Regressor**
-3. **K-Nearest Neighbors (KNN)**
-
-### Métricas Avaliadas
-
-- **RMSE** (Root Mean Squared Error)
-- **MAE** (Mean Absolute Error)
-- **R² Score** (Coefficient of Determination)
-
-### Features Utilizadas
-
-```python
-features = [
-    'projetos_min',              # Número de projetos
-    'habilidades_min',           # Número de habilidades
-    'kw_contexto',               # Palavras-chave de contexto
-    'kw_processo',               # Palavras-chave de processo
-    'kw_resultado',              # Palavras-chave de resultado
-    'consistencia_visual_score', # Score visual (0-100)
-    'bio',                       # Tem bio? (0/1)
-    'contatos'                   # Tem contatos? (0/1)
-]
-```
-
-### Target (Variável Alvo)
-
-```python
-# Índice de Qualidade (IQ) = 0-100
-IQ = (Completude × 0.4) + (Clareza × 0.4) + (Visual × 0.2)
-```
-
----
-
-## 📊 Endpoints da API
-
-### MinIO (Data Ingestion)
-
-- `POST /ingest/hubfolio` - Carrega dataset no MinIO
-- `POST /upload` - Upload manual de arquivo
-- `GET /files` - Lista arquivos no bucket
-
-### PostgreSQL
-
-- `GET /postgres/health` - Saúde do banco
-- `GET /postgres/summary` - Sumário completo
-- `GET /postgres/top-portfolios` - Top portfólios por IQ
-
-### ETL
-
-- `POST /etl/run` - Executa ETL completo (MinIO → PostgreSQL)
-
-### Machine Learning
-
-- `POST /predict` - Prediz IQ de um portfólio
-- `GET /model/info` - Informações do modelo carregado
-- `POST /model/upload` - Upload de modelo treinado (.pkl)
-
----
-
-## 🔧 Desenvolvimento
-
-### Logs dos Containers
-
-```powershell
-# Ver logs da API
+```bash
+# Ver logs de um serviço
 docker-compose logs -f fastapi
 
-# Ver logs do PostgreSQL
-docker-compose logs -f postgres
-
-# Ver logs do MinIO
-docker-compose logs -f minio
-```
-
-### Acessar Container
-
-```powershell
-# Acessar FastAPI
-docker exec -it hubfolio_fastapi /bin/bash
-
-# Acessar PostgreSQL
-docker exec -it hubfolio_postgres psql -U hubfolio_user -d hubfolio
-```
-
-### Reiniciar Serviços
-
-```powershell
-# Reiniciar tudo
-docker-compose restart
-
-# Reiniciar apenas FastAPI
+# Reiniciar serviço específico
 docker-compose restart fastapi
-```
 
----
-
-## 🐛 Troubleshooting
-
-### Erro: Containers não iniciam
-
-```powershell
-# Ver logs de erro
-docker-compose logs
-
-# Recriar containers
+# Parar todos os serviços
 docker-compose down
+
+# Parar e remover volumes (limpa dados)
+docker-compose down -v
+
+# Reconstruir containers após mudanças
 docker-compose up -d --build
 ```
 
-### Erro: MinIO não conecta
+## Troubleshooting
 
-```powershell
-# Verificar status
-docker-compose ps minio
+### ThingsBoard não inicia
 
-# Acessar console
-# URL: http://localhost:9101
+O ThingsBoard precisa do banco `thingsboard` no PostgreSQL. Verifique:
+
+```bash
+docker-compose exec postgres psql -U hubfolio_user -c "\l"
 ```
 
-### Erro: Postgres não conecta
+### Erro 401 no ThingsBoard
 
-```powershell
-# Verificar se está rodando
-docker-compose ps postgres
+O token do dispositivo está incorreto. Copie o token correto:
 
-# Testar conexão
-docker exec -it hubfolio_postgres pg_isready -U hubfolio_user
+1. ThingsBoard → Dispositivos → HubFolio Predictions → Credenciais
+2. Atualize `THINGSBOARD_DEVICE_TOKEN` no `docker-compose.yml`
+3. Execute: `docker-compose restart fastapi`
+
+### FastAPI não conecta ao MinIO/PostgreSQL
+
+Aguarde os serviços iniciarem completamente:
+
+```bash
+docker-compose ps  # Verificar se todos estão "Up"
 ```
-
----
-
-## 📝 Referência Rápida
-
-### Comandos Mais Usados
-
-| Situação                                | Comando                                                          |
-| --------------------------------------- | ---------------------------------------------------------------- |
-| **Primeira vez (setup)**                | `docker-compose up -d` → Ingest → ETL                            |
-| **Parar containers**                    | `docker-compose down`                                            |
-| **Subir containers (dados permanecem)** | `docker-compose up -d`                                           |
-| **Ver logs da API**                     | `docker-compose logs -f fastapi`                                 |
-| **Reset completo (apaga dados)**        | `docker-compose down -v` → `docker-compose up -d` → Ingest → ETL |
-| **Verificar dados**                     | `GET /postgres/summary`                                          |
-| **Reiniciar apenas API**                | `docker-compose restart fastapi`                                 |
-
-### Persistência de Dados
-
-✅ **Dados persistem** nos volumes Docker:
-
-- `hubfolio_minio_data` - Arquivos do MinIO
-- `hubfolio_postgres_data` - Banco PostgreSQL
-
-✅ **Você SÓ precisa** carregar dados (ingest + ETL) na **primeira vez**
-
-✅ **Nas próximas vezes**, apenas `docker-compose up -d` (dados já estão lá)
-
-❌ **Para apagar tudo**, use `docker-compose down -v` (remove volumes)
-
----
-
-## 📝 Próximos Passos
-
-- [✅] **Treinar modelo** com 150 dados no Jupyter Notebook
-- [ ] **Exportar modelo** como `hubfolio_model.pkl`
-- [ ] **Upload do modelo** via `POST /model/upload`
-- [ ] **Testar predições** via `POST /predict`
-- [ ] **Integrar com frontend** (opcional)
-- [ ] **Deploy em produção** (opcional)
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.

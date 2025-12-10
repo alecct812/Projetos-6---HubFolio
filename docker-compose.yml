@@ -91,6 +91,10 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/thingsboard
       - SPRING_DATASOURCE_USERNAME=hubfolio_user
       - SPRING_DATASOURCE_PASSWORD=hubfolio_password_2025
+    volumes:
+      # IMPORTANTE: Persiste dados do ThingsBoard (dashboards, devices, telemetria)
+      - tb_data:/data
+      - tb_logs:/var/log/thingsboard
     depends_on:
       postgres:
         condition: service_healthy
@@ -126,7 +130,7 @@ services:
       MLFLOW_S3_ENDPOINT_URL: http://minio:9000
       MLFLOW_EXPERIMENT_NAME: hubfolio-models
       THINGSBOARD_URL: http://thingsboard:9090
-      THINGSBOARD_DEVICE_TOKEN: Wy5t8XKqyuSula3bfeCQ
+      THINGSBOARD_DEVICE_TOKEN: uJyVUS0sQz3YaU0lr98P
     volumes:
       - ./fastapi:/app
       - ./data:/data/archive:ro
@@ -148,6 +152,9 @@ volumes:
     driver: local
   tb_data:
     name: hubfolio_tb_data
+    driver: local
+  tb_logs:
+    name: hubfolio_tb_logs
     driver: local
 
 networks:
